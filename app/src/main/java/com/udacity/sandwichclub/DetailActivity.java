@@ -72,6 +72,10 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
+
+    /**
+     * Display views according to the Sandwich object
+     */
     private void populateUI() {
         List<String> alsoKnownAs = sandwich.getAlsoKnownAs();
         StringBuilder builder = new StringBuilder();
@@ -84,6 +88,7 @@ public class DetailActivity extends AppCompatActivity {
         } else {
             TextView tvAlsoKnownLabel = findViewById(R.id.also_known_label_tv);
             tvAlsoKnownLabel.setVisibility(View.INVISIBLE);
+            tvAlsoKnown.setVisibility(View.INVISIBLE);
         }
 
         tvDescription.setText(sandwich.getDescription());

@@ -16,22 +16,22 @@ public class JsonUtils {
         try {
             JSONObject baseJson = new JSONObject(json);
             JSONObject name = baseJson.getJSONObject("name");
-            String mainName = name.getString("mainName");
+            String mainName = name.optString("mainName");
 
             JSONArray alsoKnownAs = name.getJSONArray("alsoKnownAs");
             List<String> alsoKnownList = new ArrayList<>();
             for (int i = 0; i < alsoKnownAs.length(); i++) {
-                alsoKnownList.add(alsoKnownAs.getString(i));
+                alsoKnownList.add(alsoKnownAs.optString(i));
             }
 
-            String placeOfOrigin = baseJson.getString("placeOfOrigin");
-            String description = baseJson.getString("description");
-            String image = baseJson.getString("image");
+            String placeOfOrigin = baseJson.optString("placeOfOrigin");
+            String description = baseJson.optString("description");
+            String image = baseJson.optString("image");
 
             JSONArray ingredients = baseJson.getJSONArray("ingredients");
             List<String> ingredientsList = new ArrayList<>();
             for (int i = 0; i < ingredients.length(); i++) {
-                ingredientsList.add(ingredients.getString(i));
+                ingredientsList.add(ingredients.optString(i));
             }
 
             return new Sandwich(mainName, alsoKnownList, placeOfOrigin, description, image, ingredientsList);
